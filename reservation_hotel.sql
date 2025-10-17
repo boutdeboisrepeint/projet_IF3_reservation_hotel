@@ -1,6 +1,24 @@
+SHOW DATABASES;
+
 CREATE DATABASE IF NOT EXISTS reservation_hotel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE reservation_hotel;
 
+-- Supprimer les contraintes de clé étrangère
+ALTER TABLE reservation DROP FOREIGN KEY reservation_ibfk_1;
+ALTER TABLE reservation DROP FOREIGN KEY reservation_ibfk_2;
+ALTER TABLE payment_management DROP FOREIGN KEY payment_management_ibfk_1;
+
+-- Supprimer les tables
+DROP TABLE IF EXISTS payment_management;
+DROP TABLE IF EXISTS reservation;
+DROP TABLE IF EXISTS room;
+DROP TABLE IF EXISTS client;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS hotel_extra_services;
+DROP TABLE IF EXISTS feedback;
+DROP TABLE IF EXISTS statistic;
+
+-- Recréer les tables
 CREATE TABLE user (
     id_user INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     password VARCHAR(100) NOT NULL,
