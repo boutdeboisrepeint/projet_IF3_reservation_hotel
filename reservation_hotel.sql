@@ -3,94 +3,91 @@ SHOW DATABASES;
 CREATE DATABASE IF NOT EXISTS reservation_hotel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE reservation_hotel;
 
--- Supprimer les contraintes de clé étrangère
-ALTER TABLE reservation DROP FOREIGN KEY reservation_ibfk_1;
-ALTER TABLE reservation DROP FOREIGN KEY reservation_ibfk_2;
-ALTER TABLE payment_management DROP FOREIGN KEY payment_management_ibfk_1;
-
--- Supprimer les tables
-DROP TABLE IF EXISTS payment_management;
-DROP TABLE IF EXISTS reservation;
-DROP TABLE IF EXISTS room;
-DROP TABLE IF EXISTS client;
-DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS hotel_extra_services;
-DROP TABLE IF EXISTS feedback;
-DROP TABLE IF EXISTS statistic;
-
--- Recréer les tables
-CREATE TABLE user (
-    id_user INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    password VARCHAR(100) NOT NULL,
-    role VARCHAR(100) NOT NULL,
-    surname VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE client (
-    id_client INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS guest ( -- fait
+    guest_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    last_name VARCHAR(50) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    loyalty_point INT NOT NULL DEFAULT 0,
+    loyality_points INT NOT NULL DEFAULT 0,
     phone VARCHAR(15) NOT NULL UNIQUE,
-    id_document VARCHAR(100),
-    id_user INT,
-    FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE SET NULL
+    adress VARCHAR(100),
+    login INT,
+    password VARCHAR(100) NOT NULL,
+    registration_date DATE NOT NULL,
+    date_of_birth DATE NOT NULL
 );
 
-CREATE TABLE room (
-    room_number INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    state VARCHAR(100) NOT NULL,
-    type VARCHAR(100) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    amenities VARCHAR(255),
-    capacity INT NOT NULL,
-    maintenance_status VARCHAR(100) NOT NULL
+CREATE TABLE IF NOT EXISTS room ( -- fait
+    room_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    room_number INT(10) NOT NULL UNIQUE,
+    status VARCHAR(100) NOT NULL,
+    room_type_id INT(10) NOT NULL, -- FK to room_type
+    price_per_night DECIMAL(10,2) NOT NULL
 );
 
-CREATE TABLE reservation (
+CREATE TABLE IF NOT EXISTS reservation ( -- fait
     id_reservation INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    number_of_rooms INT NOT NULL,
-    room_number INT NOT NULL,
+    number_of_guest INT NOT NULL,
+    status VARCHAR(100) NOT NULL,
     check_in_date DATE NOT NULL,
-    total_price DECIMAL(10,2) NOT NULL,
-    booking_status VARCHAR(50) NOT NULL,
-    id_client INT NOT NULL,
-    booking_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
-    extra_services VARCHAR(255),
-    FOREIGN KEY (room_number) REFERENCES room(room_number) ON DELETE CASCADE,
-    FOREIGN KEY (id_client) REFERENCES client(id_client) ON DELETE CASCADE
+    room_id INT NOT NULL, -- FK to room
+    total_price INT(10) NOT NULL,
+    booking_date DATE NOT NULL,
+    guest_id INT NOT NULL -- FK to client
 );
 
-CREATE TABLE hotel_extra_services (
-    id_service INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS services ( -- fait
+    service_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     service_name VARCHAR(100) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
+    description VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS payment ( -- fait
+    payment_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    method VARCHAR(100) NOT NULL,
+    reservation_id INT NOT NULL, -- FK to reservation
+    guest_id INT NOT NULL, -- FK to guest
+    amount INT(10) NOT NULL,
+    payment_date DATE NOT NULL,
+    status VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS feedback ( -- fait
+    feedback_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    comment VARCHAR(255),
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    date_posted DATE NOT NULL,
+    guest_id INT NOT NULL, -- FK to guest
+    reservation_id INT NOT NULL -- FK to reservation
+);
+
+CREATE TABLE IF NOT EXISTS employee ( -- fait
+    phone VARCHAR(15) NOT NULL,
+    employee_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    last_name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    login VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS room_type ( -- fait
+    room_type_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    type_name VARCHAR(50) NOT NULL,
     description VARCHAR(255),
-    invoices VARCHAR(255)
+    base_price DECIMAL(10,2) NOT NULL,
+    capacity INT NOT NULL,
+    amenities VARCHAR(255)
 );
 
-CREATE TABLE payment_management (
-    id_payment INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    payment_method VARCHAR(100) NOT NULL,
-    invoices VARCHAR(100),
-    payment_status VARCHAR(100) NOT NULL,
-    reservation_id INT NOT NULL,
-    review VARCHAR(255),
-    FOREIGN KEY (reservation_id) REFERENCES reservation(id_reservation) ON DELETE CASCADE
-);
-
-CREATE TABLE feedback (
-    id_feedback INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    review VARCHAR(255),
-    satisfaction_level INT CHECK (satisfaction_level BETWEEN 1 AND 5),
-    feedback_date DATE NOT NULL
-);
-
-CREATE TABLE statistic (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    season VARCHAR(100) NOT NULL,
-    trends VARCHAR(100),
-    type VARCHAR(100)
+CREATE TABLE IF NOT EXISTS maintenance ( -- fait
+    maintenance_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    room_id INT NOT NULL, -- FK to room
+    description VARCHAR(255),
+    start_date DATE NOT NULL,
+    end_date DATE,
+    employee_id INT NOT NULL
 );
