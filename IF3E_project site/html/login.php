@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="../css/reservation.css"> <link rel="stylesheet" href="../css/forms.css"> </head>
 <body>
 
+
 <header class="home-page-navbar-container scrolled">
     <div class="navbar-inner">
         <div class="navbar-left">
-            <a href="../html/index.html" class="navbar-link">ACCUEIL</a>
+            <a href="index.php" class="navbar-link">ACCUEIL</a>
         </div>
         <div class="navbar-center">
             <h1 class="navbar-title">
@@ -42,7 +43,7 @@
             <button type="submit" class="reservation-button full-width">Se Connecter</button>
         </form>
         <div class="form-links">
-            <a href="register.html">Pas encore de compte ? S'inscrire</a>
+            <a href="register.php">Pas encore de compte ? S'inscrire</a>
             <a href="#">Mot de passe oublié ?</a>
         </div>
     </section>

@@ -12,7 +12,7 @@
 <header class="home-page-navbar-container scrolled">
     <div class="navbar-inner">
          <div class="navbar-left">
-            <a href="../html/index.html" class="navbar-link">ACCUEIL</a>
+            <a href="index.php" class="navbar-link">ACCUEIL</a>
         </div>
         <div class="navbar-center">
             <h1 class="navbar-title">
@@ -64,7 +64,7 @@
             <button type="submit" class="reservation-button full-width">S'inscrire</button>
         </form>
         <div class="form-links">
-            <a href="login.html">Déjà un compte ? Se connecter</a>
+            <a href="login.php">Déjà un compte ? Se connecter</a>
         </div>
     </section>
 </main>

@@ -31,7 +31,7 @@
         <nav class="navbar-submenu">
             <a href="./" class="submenu-link">EXTRA</a>
             <a href="#our_rooms" class="submenu-link">OUR ROOMS</a>
-            <a href="../html/restaurents.html" class="submenu-link">RESTAURANTS</a>
+            <a href="../html/restaurents.php" class="submenu-link">RESTAURANTS</a>
             <a href="" class="submenu-link">Spa & Bien-être</a>
             <a href="" class="submenu-link">Contact</a>
         </nav>

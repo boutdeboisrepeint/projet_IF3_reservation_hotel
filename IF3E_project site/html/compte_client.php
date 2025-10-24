@@ -12,7 +12,7 @@
 <header class="home-page-navbar-container scrolled">
     <div class="navbar-inner">
         <div class="navbar-left">
-            <a href="../html/index.html" class="navbar-link">ACCUEIL</a>
+            <a href="index.php" class="navbar-link">ACCUEIL</a>
         </div>
         <div class="navbar-center">
             <h1 class="navbar-title">
@@ -22,7 +22,7 @@
             </h1>
         </div>
         <div class="navbar-right">
-             <a href="login.html" class="navbar-link">DÉCONNEXION</a>
+             <a href="login.php" class="navbar-link">DÉCONNEXION</a>
         </div>
     </div>
 </header>

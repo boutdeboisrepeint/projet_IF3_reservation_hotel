@@ -16,8 +16,8 @@
             <span>Admin Panel</span>
         </div>
         <nav class="sidebar-nav">
-            <a href="admin_dashboard.html" class="active">Tableau de bord</a>
-            <a href="admin_gestion_reservations.html">Gérer les Réservations</a> <a href="admin_gestion_chambres.html">Gérer les Chambres</a> <a href="admin_gestion_clients.html">Gérer les Clients</a> <a href="admin_checkinout.html">Check-in / Check-out</a> <a href="admin_rapports.html">Rapports & Stats</a> <a href="../html/index.html">Retour au site</a>
+            <a href="admin_dashboard.php" class="active">Tableau de bord</a>
+            <a href="admin_gestion_reservations.php">Gérer les Réservations</a> <a href="admin_gestion_chambres.php">Gérer les Chambres</a> <a href="admin_gestion_clients.php">Gérer les Clients</a> <a href="admin_checkinout.php">Check-in / Check-out</a> <a href="admin_rapports.php">Rapports & Stats</a> <a href="index.php">Retour au site</a>
         </nav>
     </aside>
 
@@ -48,9 +48,9 @@
 
             <div class="quick-actions">
                 <h3>Actions Rapides</h3>
-                <a href="admin_checkinout.html" class="action-btn">Effectuer un Check-in</a>
-                <a href="admin_gestion_chambres.html" class="action-btn">Modifier statut chambre</a>
-                <a href="admin_gestion_reservations.html" class="action-btn">Voir les réservations</a>
+                <a href="admin_checkinout.php" class="action-btn">Effectuer un Check-in</a>
+                <a href="admin_gestion_chambres.php" class="action-btn">Modifier statut chambre</a>
+                <a href="admin_gestion_reservations.php" class="action-btn">Voir les réservations</a>
             </div>
 
         </section>

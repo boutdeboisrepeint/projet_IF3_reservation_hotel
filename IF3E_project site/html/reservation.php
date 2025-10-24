@@ -12,7 +12,7 @@
 <header class="home-page-navbar-container scrolled">
     <div class="navbar-inner">
         <div class="navbar-left">
-            <a href="../html/index.html" class="navbar-link">ANNULER</a>
+            <a href="index.php" class="navbar-link">ANNULER</a>
         </div>
         <div class="navbar-center">
             <h1 class="navbar-title">
