@@ -29,7 +29,7 @@
         <h2>Créer un Compte</h2>
         <p class="form-subtitle">Rejoignez-nous pour une expérience de réservation simplifiée.</p>
         
-        <form class="reservation-form auth-form" action="register-process.php" method="POST">
+        <form class="reservation-form auth-form" action="register-process.php" method="POST" action="register-process.php" method="post">
             
             <div class="reservation-field">
                 <label for="firstname">Prénom</label>
