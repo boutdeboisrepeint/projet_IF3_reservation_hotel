@@ -1,0 +1,136 @@
+/* ===== FONTS PERSONNALISÉES ===== */
+@font-face {
+    font-family: 'o';
+    src: url('./AtlantisResorts-Headline.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta_Light';
+    src: url('./AvertaPE-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta_Regular';
+    src: url('./AvertaPE-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta_Bold';
+    src: url('./AvertaPE-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ===== GRID CHAMBRES ===== */
+.rooms-main {
+    padding-top: 100px; /* espace pour navbar */
+    display: flex;
+    justify-content: center;
+}
+
+.rooms-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Carte chambre */
+.room-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+}
+
+.room-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.room-title {
+    margin: 15px 0 5px 0;
+    font-family: "o", sans-serif;
+    font-size: 18px;
+    color: #003366;
+}
+
+.room-price {
+    font-weight: 600;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.room-description {
+    font-size: 14px;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.room-capacity {
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #888;
+}
+
+.room-reservation-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+.room-reservation-form .reservation-field {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-reservation-form label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.room-reservation-form input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+.room-reservation-form .reservation-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #003366;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.room-reservation-form .reservation-button:hover {
+    background-color: #002850;
+}

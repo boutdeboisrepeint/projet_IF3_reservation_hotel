@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The UTBM Ressort Belfort</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header class="home-page-navbar-container">
+        <div class="navbar-inner">
+            <div class="navbar-left">
+                <a href="#contact" class="navbar-link">CONTACT</a>
+            </div>
+
+            <div class="navbar-center">
+                <h1 class="navbar-title">
+                    <span class="line-large">THE UTBM</span><br>
+                    <span class="line-medium">RESSORT</span><br>
+                    <span class="line-small">BELFORT</span>
+                </h1>
+            </div>
+
+            <div class="navbar-right">
+                <a href="#book" class="navbar-button">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="navbar-bottom-line"></div>
+        <nav class="navbar-submenu">
+            <a href="./" class="submenu-link">EXTRA</a>
+            <a href="#our_rooms" class="submenu-link">OUR ROOMS</a>
+            <a href="../html/restaurents.html" class="submenu-link">RESTAURANTS</a>
+            <a href="" class="submenu-link">Spa & Bien-être</a>
+            <a href="" class="submenu-link">Contact</a>
+        </nav>
+    </header>
+    
+    <div class="home-page-section-main-bg-container">
+        <img class="home-page-section-main-bg" src="../img/2654691_xlarge_1ea75b8c.jpg" alt="">
+        <h1 class="home-page-section-main-title">Your experts in budgets hotels around the world.</h1>
+    </div>
+    <section class="home-page-search-section">
+        <div class="search-container">
+
+            <div class="search-field">
+                <label for="date-arrivee" class="search-label">CHECK-IN</label>
+                <input type="date" id="date-arrivee" class="search-input" name="date-arrivee">
+            </div>
+
+            <div class="search-field">
+                <label for="date-depart" class="search-label">CHECK-OUT</label>
+                <input type="date" id="date-depart" class="search-input" name="date-depart">
+            </div>
+
+            <div class="search-field">
+                <label for="adultes" class="search-label">Adultes</label>
+                <input type="number" id="adultes" class="search-input" name="adultes" min="1" value="1">
+            </div>
+
+            <div class="search-field">
+                <label for="enfants" class="search-label">Enfants</label>
+                <input type="number" id="enfants" class="search-input" name="enfants" min="0" value="0">
+            </div>
+
+            <button class="search-button">FIND ROOM</button>
+        </div>
+    </section>
+    <section class="home-page-intro">
+        <div class="intro-container">
+            <h2 class="intro-title">THIS IS THE MOST ULTRA-LUXURY EXPERIENTIAL RESORT IN THE WORLD</h2>
+            <p class="intro-text">
+                Embrace a new standard of luxury, where the highest level of service sets a new benchmark for excellence. This is the place where something incredible happens at every moment of your stay.
+            </p>
+            <p class="intro-text">This is The UTBM.</p>
+            <a href="#" class="intro-button">BOOK NOW</a>
+        </div>
+    </section>
+
+    <main class="rooms-main" id="our_rooms">
+        <section class="rooms-container">
+            <div class="room-card">
+                <img src="../img/room1.webp" alt="Chambre Deluxe">
+                <h3 class="room-title">Chambre Deluxe</h3>
+                <p class="room-price">€200 / nuit</p>
+                <p class="room-description">Une chambre spacieuse avec vue sur le jardin.</p>
+                <p class="room-capacity">Capacité : 2 personnes</p>
+                <form class="room-reservation-form">
+                    <div class="reservation-field">
+                        <label for="checkin1">CHECK-IN</label>
+                        <input type="text" id="checkin1" name="checkin1" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="checkout1">CHECK-OUT</label>
+                        <input type="text" id="checkout1" name="checkout1" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="adultes1">Adultes</label>
+                        <input type="number" id="adultes1" name="adultes1" min="1" value="1">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="enfants1">Enfants</label>
+                        <input type="number" id="enfants1" name="enfants1" min="0" value="0">
+                    </div>
+                    <button type="submit" class="reservation-button">Réserver</button>
+                </form>
+            </div>
+    
+            <div class="room-card">
+                <img src="../img/room2.webp" alt="Chambre Premium">
+                <h3 class="room-title">Chambre Premium</h3>
+                <p class="room-price">€250 / nuit</p>
+                <p class="room-description">Chambre élégante avec balcon et vue sur la piscine.</p>
+                <p class="room-capacity">Capacité : 2 personnes</p>
+                <form class="room-reservation-form">
+                    <div class="reservation-field">
+                        <label for="checkin2">CHECK-IN</label>
+                        <input type="text" id="checkin2" name="checkin2" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="checkout2">CHECK-OUT</label>
+                        <input type="text" id="checkout2" name="checkout2" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="adultes2">Adultes</label>
+                        <input type="number" id="adultes2" name="adultes2" min="1" value="1">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="enfants2">Enfants</label>
+                        <input type="number" id="enfants2" name="enfants2" min="0" value="0">
+                    </div>
+                    <button type="submit" class="reservation-button">Réserver</button>
+                </form>
+            </div>
+    
+            <div class="room-card">
+                <img src="../img/room3.webp" alt="Suite Junior">
+                <h3 class="room-title">Suite Junior</h3>
+                <p class="room-price">€350 / nuit</p>
+                <p class="room-description">Suite confortable avec salon privé et balcon.</p>
+                <p class="room-capacity">Capacité : 3 personnes</p>
+                <form class="room-reservation-form">
+                    <div class="reservation-field">
+                        <label for="checkin3">CHECK-IN</label>
+                        <input type="text" id="checkin3" name="checkin3" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="checkout3">CHECK-OUT</label>
+                        <input type="text" id="checkout3" name="checkout3" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="adultes3">Adultes</label>
+                        <input type="number" id="adultes3" name="adultes3" min="1" value="1">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="enfants3">Enfants</label>
+                        <input type="number" id="enfants3" name="enfants3" min="0" value="0">
+                    </div>
+                    <button type="submit" class="reservation-button">Réserver</button>
+                </form>
+            </div>
+    
+            <div class="room-card">
+                <img src="../img/room4.webp" alt="Suite Senior">
+                <h3 class="room-title">Suite Senior</h3>
+                <p class="room-price">€450 / nuit</p>
+                <p class="room-description">Grande suite avec terrasse et vue panoramique.</p>
+                <p class="room-capacity">Capacité : 4 personnes</p>
+                <form class="room-reservation-form">
+                    <div class="reservation-field">
+                        <label for="checkin4">CHECK-IN</label>
+                        <input type="text" id="checkin4" name="checkin4" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="checkout4">CHECK-OUT</label>
+                        <input type="text" id="checkout4" name="checkout4" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="adultes4">Adultes</label>
+                        <input type="number" id="adultes4" name="adultes4" min="1" value="1">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="enfants4">Enfants</label>
+                        <input type="number" id="enfants4" name="enfants4" min="0" value="0">
+                    </div>
+                    <button type="submit" class="reservation-button">Réserver</button>
+                </form>
+            </div>
+    
+            <div class="room-card">
+                <img src="../img/room5.webp" alt="Chambre Familiale">
+                <h3 class="room-title">Chambre Familiale</h3>
+                <p class="room-price">€300 / nuit</p>
+                <p class="room-description">Chambre idéale pour familles, avec deux lits doubles.</p>
+                <p class="room-capacity">Capacité : 4 personnes</p>
+                <form class="room-reservation-form">
+                    <div class="reservation-field">
+                        <label for="checkin5">CHECK-IN</label>
+                        <input type="text" id="checkin5" name="checkin5" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="checkout5">CHECK-OUT</label>
+                        <input type="text" id="checkout5" name="checkout5" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="adultes5">Adultes</label>
+                        <input type="number" id="adultes5" name="adultes5" min="1" value="1">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="enfants5">Enfants</label>
+                        <input type="number" id="enfants5" name="enfants5" min="0" value="0">
+                    </div>
+                    <button type="submit" class="reservation-button">Réserver</button>
+                </form>
+            </div>
+    
+            <div class="room-card">
+                <img src="../img/room6.webp" alt="Suite Luxe">
+                <h3 class="room-title">Suite Luxe</h3>
+                <p class="room-price">€600 / nuit</p>
+                <p class="room-description">Suite prestigieuse avec salon, balcon et jacuzzi.</p>
+                <p class="room-capacity">Capacité : 2 personnes</p>
+                <form class="room-reservation-form">
+                    <div class="reservation-field">
+                        <label for="checkin6">CHECK-IN</label>
+                        <input type="text" id="checkin6" name="checkin6" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="checkout6">CHECK-OUT</label>
+                        <input type="text" id="checkout6" name="checkout6" placeholder="Sélectionnez une date">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="adultes6">Adultes</label>
+                        <input type="number" id="adultes6" name="adultes6" min="1" value="1">
+                    </div>
+                    <div class="reservation-field">
+                        <label for="enfants6">Enfants</label>
+                        <input type="number" id="enfants6" name="enfants6" min="0" value="0">
+                    </div>
+                    <button type="submit" class="reservation-button">Réserver</button>
+                </form>
+            </div>
+    
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>© 2025 UTBM Resort Belfort. All rights reserved.</p>
+            <p>
+                <a href="#" class="footer-link">Privacy Policy</a> |
+                <a href="#" class="footer-link">Terms & Conditions</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.home-page-navbar-container');
+        if (window.scrollY > 0) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      // Initialisation des calendriers Flatpickr pour chaque chambre
+      for (let i = 1; i <= 6; i++) {
+        flatpickr(`#checkin${i}`, { altInput: true, altFormat: "d-m-Y", dateFormat: "Y-m-d", minDate: "today" });
+        flatpickr(`#checkout${i}`, { altInput: true, altFormat: "d-m-Y", dateFormat: "Y-m-d", minDate: "today" });
+      }
+    </script>
+
+</body>
+</html>
