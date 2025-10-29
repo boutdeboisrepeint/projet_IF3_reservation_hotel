@@ -63,7 +63,7 @@
 
             <div class="reservation-field full-width">
                 <label for="date_of_birth">Date de naissance</label>
-                <input type="date" id="date_of_birth" name="date_of_birth">
+                <input type="date" id="date_of_birth" name="date_of_birth" required>
             </div>
 
             <button type="submit" class="reservation-button full-width">S'inscrire</button>
