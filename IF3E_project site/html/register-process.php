@@ -1,40 +1,59 @@
 <?php
-
-
-// --- 1️⃣ Connexion à la base de données ---
+// php
 $servername = "localhost";
 $username = "root";
-$password = ""; // vide par défaut sous XAMPP
-$dbname = "gestion_reservation_hotel"; // remplace par le nom de ta base
+$password = "";
+$dbname = "gestion_reservation_hotel";
 
-$bdd = new PDO("mysql:host;dbname=gestion_reservation_hotel;charset=utf8", "root", "");
-
-if ($bdd->connect_error) {
-    die("Échec de la connexion : " . $bdd->connect_error);
+try {
+    $bdd = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+} catch (PDOException $e) {
+    die("Connexion échouée: " . $e->getMessage());
 }
 
-$name = $_POST['lastname'];
-$first_name = $_POST['firstname'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$phone = $_POST['phone'];
-$adresse = $_POST['adresse'];
+$name = $_POST['lastname'] ?? '';
+$first_name = $_POST['firstname'] ?? '';
+$email = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+$phone = $_POST['phone'] ?? '';
+$adresse = $_POST['adresse'] ?? 'indef'; // valeur par défaut si absente
+$login = $_POST['login'] ?? 'indef';
+$registration_date = (new DateTime())->format('Y-m-d H:i:s');
+$date_of_birth = (new DateTime($_POST['date_of_birth']))->format('Y-m-d');
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO guest (guest_id, last_name, first_name, email, loyality_points, phone, adress, login, password, registration_date, date_of_birth) VALUES ("", name, first_name, email, 0, phone, adress)";
+$sql = "INSERT INTO guest (
+    last_name, first_name, email, loyality_points, phone,
+    adress, login, password, registration_date, date_of_birth
+) VALUES (
+    :last_name, :first_name, :email, :loyality_points, :phone,
+    :adress, :login, :password, :registration_date, :date_of_birth
+)";
 
 $stmt = $bdd->prepare($sql);
-$stmt->bind_param("sss", $name, $email, $hashed_password);
 
-if ($stmt->execute()) {
+$params = [
+    ':last_name' => $name,
+    ':first_name' => $first_name,
+    ':email' => $email,
+    ':loyality_points' => 0,
+    ':phone' => $phone,
+    ':adress' => $adresse,
+    ':login' => $login,
+    ':password' => $hashed_password,
+    ':registration_date' => $registration_date,
+    ':date_of_birth' => $date_of_birth // NULL accepté
+];
+
+try {
+    $stmt->execute($params);
     echo "✅ Inscription réussie ! <a href='login.php'>Se connecter</a>";
-} else {
-    echo "❌ Erreur : " . $stmt->error;
+} catch (PDOException $e) {
+    echo "❌ Erreur : " . $e->getMessage();
 }
 
-// --- 5️⃣ Fermeture ---
-$stmt->close();
-$bdd->close();
-
-
+$stmt = null;
+$bdd = null;

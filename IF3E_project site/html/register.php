@@ -48,7 +48,7 @@
             
             <div class="reservation-field full-width">
                 <label for="phone">Téléphone</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
             </div>
 
             <div class="reservation-field">
@@ -59,6 +59,11 @@
             <div class="reservation-field">
                 <label for="confirm_password">Confirmer le mot de passe</label>
                 <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+
+            <div class="reservation-field full-width">
+                <label for="date_of_birth">Date de naissance</label>
+                <input type="date" id="date_of_birth" name="date_of_birth">
             </div>
 
             <button type="submit" class="reservation-button full-width">S'inscrire</button>
