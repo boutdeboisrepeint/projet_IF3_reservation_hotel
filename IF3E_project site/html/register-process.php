@@ -62,7 +62,7 @@ if ($existing) {
         echo "Ce numéro de téléphone est déjà utilisé.";
     } elseif (!empty($existing['email']) && $existing['email'] === $email) {
         echo "Cette adresse e-mail est déjà utilisée.";
-    } else {
+    } elseif (!empty($existing['login']) && $existing['login'] === $login) {
         echo "Ce login est déjà utilisé.";
     }
     exit;
