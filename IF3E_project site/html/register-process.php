@@ -76,12 +76,13 @@ if (!empty($checkParts)) {
     if ($existing) {
         if (!empty($existing['phone']) && $existing['phone'] === $phone) {
             echo "Ce numéro de téléphone est déjà utilisé.";
+            header("Location: register.php?error=phone_exists");
         } elseif (!empty($existing['email']) && $existing['email'] === $email) {
             echo "Cette adresse e-mail est déjà utilisée.";
+            header("Location: register.php?error=phone_exists");
         } elseif (!empty($existing['login']) && $existing['login'] === $login) {
             echo "Ce login est déjà utilisé.";
-        } else {
-            echo "Conflit d'unicité détecté.";
+            header("Location: register.php?error=phone_exists");
         }
         exit;
     }
@@ -133,3 +134,6 @@ try {
 
 $stmt = null;
 $bdd = null;
+
+header ("Location: login.php");
+exit;
