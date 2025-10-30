@@ -1,5 +1,7 @@
 <?php
 // php
+// Fichier : `IF3E_project site/html/register-process.php`
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,26 +9,28 @@ $dbname = "gestion_reservation_hotel";
 
 try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
 } catch (PDOException $e) {
     die("Connexion échouée: " . $e->getMessage());
 }
 
+// Récupération et normalisation des champs
 $name = trim($_POST['lastname'] ?? '');
 $first_name = trim($_POST['firstname'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 $phone_raw = $_POST['phone'] ?? '';
-$adresse = $_POST['adresse'] ?? 'indef';
-$login = $_POST['login'] ?? 'indef';
+$adresse = trim($_POST['adresse'] ?? '');
+$login = trim($_POST['login'] ?? '');
 $registration_date = (new DateTime())->format('Y-m-d H:i:s');
 $date_of_birth = !empty($_POST['date_of_birth']) ? (new DateTime($_POST['date_of_birth']))->format('Y-m-d') : null;
 
-// Normaliser téléphone
+// Normaliser téléphone (garder seulement les chiffres)
 $phone = preg_replace('/\D+/', '', $phone_raw);
 
-// Vérifications basiques
+// Validations basiques
 if ($phone === '' || strlen($phone) !== 10) {
     echo "Téléphone invalide. Utilisez 10 chiffres.";
     exit;
@@ -42,33 +46,48 @@ if (empty($password) || empty($name) || empty($first_name)) {
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-// Vérifier unicité (sans sélectionner `id`)
-$check_unicite_sql = "SELECT phone, email, login FROM guest WHERE phone = :phone OR email = :email OR login = :login LIMIT 1";
+// Construire dynamiquement la vérification d'unicité (ignorera les champs vides)
+$checkParts = [];
+$checkParams = [];
 
-try {
-    $checkStmt = $bdd->prepare($check_unicite_sql);
-    $checkStmt->execute([
-        'phone' => $phone,
-        'email' => $email,
-        'login' => $login
-    ]);
-    $existing = $checkStmt->fetch(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Erreur lors de la vérification d'unicité : " . $e->getMessage());
+if ($phone !== '') {
+    $checkParts[] = 'phone = :phone';
+    $checkParams['phone'] = $phone;
+}
+if ($email !== '') {
+    $checkParts[] = 'email = :email';
+    $checkParams['email'] = $email;
+}
+if ($login !== '') {
+    $checkParts[] = 'login = :login';
+    $checkParams['login'] = $login;
 }
 
-if ($existing) {
-    if (!empty($existing['phone']) && $existing['phone'] === $phone) {
-        echo "Ce numéro de téléphone est déjà utilisé.";
-    } elseif (!empty($existing['email']) && $existing['email'] === $email) {
-        echo "Cette adresse e-mail est déjà utilisée.";
-    } elseif (!empty($existing['login']) && $existing['login'] === $login) {
-        echo "Ce login est déjà utilisé.";
+if (!empty($checkParts)) {
+    $check_sql = 'SELECT phone, email, login FROM guest WHERE ' . implode(' OR ', $checkParts) . ' LIMIT 1';
+    try {
+        $checkStmt = $bdd->prepare($check_sql);
+        $checkStmt->execute($checkParams);
+        $existing = $checkStmt->fetch();
+    } catch (PDOException $e) {
+        die("Erreur lors de la vérification d'unicité : " . $e->getMessage());
     }
-    exit;
+
+    if ($existing) {
+        if (!empty($existing['phone']) && $existing['phone'] === $phone) {
+            echo "Ce numéro de téléphone est déjà utilisé.";
+        } elseif (!empty($existing['email']) && $existing['email'] === $email) {
+            echo "Cette adresse e-mail est déjà utilisée.";
+        } elseif (!empty($existing['login']) && $existing['login'] === $login) {
+            echo "Ce login est déjà utilisé.";
+        } else {
+            echo "Conflit d'unicité détecté.";
+        }
+        exit;
+    }
 }
 
-// Préparer et exécuter l'insertion
+// Préparer l'insertion (vérifier que les noms de colonnes correspondent à votre schéma)
 $sql = "INSERT INTO guest (
     last_name, first_name, email, loyality_points, phone,
     adress, login, password, registration_date, date_of_birth
@@ -85,16 +104,25 @@ $params = [
     'email' => $email,
     'loyality_points' => 0,
     'phone' => $phone,
-    'adress' => $adresse,
-    'login' => $login,
+    'adress' => $adresse,        // vérifier orthographe de la colonne dans la BDD
+    'login' => $login !== '' ? $login : null,
     'password' => $hashed_password,
     'registration_date' => $registration_date,
     'date_of_birth' => $date_of_birth
 ];
 
+// Debug minimal (enlever ou commenter en production)
+error_log('Params insert: ' . print_r($params, true));
+
 try {
     $stmt->execute($params);
-    echo "✅ Inscription réussie ! <a href='login.php'>Se connecter</a>";
+    if ($stmt->rowCount() > 0) {
+        $lastId = $bdd->lastInsertId();
+        echo "✅ Inscription réussie ! ID: " . ($lastId ? $lastId : 'N/A') . " <a href='login.php'>Se connecter</a>";
+    } else {
+        echo "Aucune ligne insérée.";
+        error_log('Aucune ligne insérée. Params: ' . print_r($params, true));
+    }
 } catch (PDOException $e) {
     if ($e->getCode() === '23000') {
         echo "Erreur : donnée déjà existante (contrainte d'unicité).";

@@ -29,7 +29,7 @@
         <h2>Créer un Compte</h2>
         <p class="form-subtitle">Rejoignez-nous pour une expérience de réservation simplifiée.</p>
         
-        <form class="reservation-form auth-form" action="register-process.php" method="POST" action="register-process.php" method="post">
+        <form class="reservation-form auth-form" action="register-process.php" method="POST">
             
             <div class="reservation-field">
                 <label for="firstname">Prénom</label>
@@ -41,6 +41,11 @@
                 <input type="text" id="lastname" name="lastname" required>
             </div>
 
+            <div class="reservation-field">
+                <label for="login">Surname</label>
+                <input type="text" id="login" name="login" required>
+            </div>
+
             <div class="reservation-field full-width">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
@@ -49,6 +54,11 @@
             <div class="reservation-field full-width">
                 <label for="phone">Téléphone</label>
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            </div>
+
+            <div class="reservation-field full-width">
+                <label for="adresse">Adresse</label>
+                <input type="text" id="adresse" name="adresse" required>
             </div>
 
             <div class="reservation-field">
