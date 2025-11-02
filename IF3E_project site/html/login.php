@@ -30,7 +30,7 @@
         
         <form class="reservation-form auth-form" action="login-process.php" method="POST">
             
-            <div class="reservation-field full-width">
+            <div class="reservation-field full-wid  th">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
