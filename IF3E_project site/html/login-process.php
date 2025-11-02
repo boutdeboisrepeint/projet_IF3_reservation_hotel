@@ -17,6 +17,7 @@ try {
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 
+
 if ($email === '' || $password === '') {
     echo "Email ou mot de passe manquant.";
     exit;
@@ -42,9 +43,12 @@ if ($user) {
 
     if ($valid) {
         session_start();
+        $name = 'select name from guest where email= :email and password= :password';
+        $firstname = 'select firstname from guest where email= :email and password= :password';
+        $phone = 'select phone from guest where email= :email and password= :password';
         $_SESSION['user_id'] = $user['id'] ?? null;
         $displayName = $user['first_name'] ?? $user['firstname'] ?? $user['last_name'] ?? '';
-        header("location: index.php");
+        header("location: compte_client.php?name=$name&firstname=$firstname&email=$email&phone=$phone");
         exit;
     }
 }

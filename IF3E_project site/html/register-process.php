@@ -22,13 +22,13 @@ $first_name = trim($_POST['firstname'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 $phone_raw = $_POST['phone'] ?? '';
-$adresse = trim($_POST['adresse'] ?? '');
-$login = trim($_POST['login'] ?? '');
-$registration_date = (new DateTime())->format('Y-m-d H:i:s');
-$date_of_birth = !empty($_POST['date_of_birth']) ? (new DateTime($_POST['date_of_birth']))->format('Y-m-d') : null;
-
 // Normaliser téléphone (garder seulement les chiffres)
 $phone = preg_replace('/\D+/', '', $phone_raw);
+$adresse = trim($_POST['adresse'] ?? '');
+$login = trim($_POST['login'] ?? '');
+$registration_date = (new DateTime('now', new DateTimeZone('Europe/Paris')))->format('Y-m-d H:i:s');
+$date_of_birth = trim($_POST['date_of_birth'] ?? '');
+
 
 // Validations basiques
 if ($phone === '' || strlen($phone) !== 10) {
@@ -46,7 +46,6 @@ if (empty($password) || empty($name) || empty($first_name)) {
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-// Construire dynamiquement la vérification d'unicité (ignorera les champs vides)
 $checkParts = [];
 $checkParams = [];
 
@@ -84,11 +83,9 @@ if (!empty($checkParts)) {
             echo "Ce login est déjà utilisé.";
             header("Location: register.php?error=phone_exists");
         }
-        exit;
     }
 }
 
-// Préparer l'insertion (vérifier que les noms de colonnes correspondent à votre schéma)
 $sql = "INSERT INTO guest (
     last_name, first_name, email, loyality_points, phone,
     adress, login, password, registration_date, date_of_birth
@@ -96,6 +93,8 @@ $sql = "INSERT INTO guest (
     :last_name, :first_name, :email, :loyality_points, :phone,
     :adress, :login, :password, :registration_date, :date_of_birth
 )";
+
+echo '$sql';
 
 $stmt = $bdd->prepare($sql);
 
@@ -105,21 +104,19 @@ $params = [
     'email' => $email,
     'loyality_points' => 0,
     'phone' => $phone,
-    'adress' => $adresse,        // vérifier orthographe de la colonne dans la BDD
+    'adress' => $adresse,
     'login' => $login !== '' ? $login : null,
     'password' => $hashed_password,
     'registration_date' => $registration_date,
     'date_of_birth' => $date_of_birth
 ];
 
-// Debug minimal (enlever ou commenter en production)
 error_log('Params insert: ' . print_r($params, true));
 
 try {
     $stmt->execute($params);
     if ($stmt->rowCount() > 0) {
-        $lastId = $bdd->lastInsertId();
-        echo "✅ Inscription réussie ! ID: " . ($lastId ? $lastId : 'N/A') . " <a href='login.php'>Se connecter</a>";
+        echo "Inscription réussie ! <a href='login.php'>Se connecter</a>";
     } else {
         echo "Aucune ligne insérée.";
         error_log('Aucune ligne insérée. Params: ' . print_r($params, true));

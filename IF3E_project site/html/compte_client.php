@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../css/forms.css">
 </head>
 <body>
+<?php
+// Récupération des informations du client depuis les paramètres GET
+$name = $_GET['name'] ?? 'prenom' ;
+$firstname = $_GET['firstname'] ?? 'nom' ;
+$email = $_GET['email'] ?? 'email' ;
+$phone = $_GET['phone'] ?? 'telephone' ;
+?>
 
 <header class="home-page-navbar-container scrolled">
     <div class="navbar-inner">
@@ -29,8 +36,8 @@
 
 <main class="reservation-main">
     <section class="reservation-container form-container account-container">
-        <h2>Bonjour, [Nom du Client]</h2>
-        
+        <h2>Bonjour, <?php echo htmlspecialchars($firstname); ?></h2>
+
         <div class="account-section">
             <h3>Mes Réservations</h3>
             <div class="booking-item">
@@ -42,24 +49,24 @@
                 <p>Statut : Terminé</p>
                 <a href="#feedback" class="btn-review">Laisser un avis</a> </div>
         </div>
-        
-        <div class="account-section">
+
+        <div class="account-section" >
             <h3>Mon Profil</h3> <form class="reservation-form auth-form" method="POST" action="update-profile.php">
                 <div class="reservation-field">
-                    <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname" value="[Nom]">
+                    <label for="firstname">prenom</label>
+                    <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($firstname); ?>"readonly>
                 </div>
                 <div class="reservation-field">
                     <label for="lastname">Nom</label>
-                    <input type="text" id="lastname" name="lastname" value="[Client]">
+                    <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($name); ?>"readonly>
                 </div>
                 <div class="reservation-field full-width">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="[email@client.com]">
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>"readonly>
                 </div>
                 <div class="reservation-field full-width">
                     <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone" value="[0612345678]">
+                    <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($phone); ?>"readonly>
                 </div>
                 <button type="submit" class="reservation-button full-width">Mettre à jour le profil</button>
             </form>
@@ -75,12 +82,11 @@
                     <label for="comment">Commentaire</label>
                     <textarea id="comment" name="comment" rows="5"></textarea>
                 </div>
-                <button type="submit" class="reservation-button full-width">Envoyer l'avis</button>
+                <button type="submit" class="reservation-button full-width">Envoyer l\'avis</button>
             </form>
         </div>
 
     </section>
 </main>
-
 </body>
 </html>
