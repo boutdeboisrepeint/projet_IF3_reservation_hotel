@@ -1,0 +1,802 @@
+/* ===== FONTS PERSONNALISÉES ===== */
+@font-face {
+    font-family: 'o';
+    src: url('../fonts/AtlantisResorts-Headline.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta_Light';
+    src: url('../fonts/AvertaPE-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta_Regular';
+    src: url('../fonts/AvertaPE-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averta_Bold';
+    src: url('../fonts/AvertaPE-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Réinitialisation */
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;  
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "Averta_Regular", sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+}
+
+/* Layout de la Grille Principale */
+.admin-grid-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 100vh;
+    height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+.admin-sidebar {
+    background-color: #00143a;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #00285a;
+}
+
+.sidebar-header h3 {
+    font-family: "o", sans-serif;
+    font-weight: 300;
+    color: #d1b899;
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+}
+
+.sidebar-header span {
+    font-size: 0.8rem;
+    color: #8a9fc1;
+    font-family: "Averta_Light", sans-serif;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 20px;
+}
+
+.sidebar-nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 0.95rem;
+    font-family: "Averta_Regular", sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-nav a:hover {
+    background-color: #00285a;
+    color: white;
+}
+
+.sidebar-nav a.active {
+    background-color: #003366;
+    color: white;
+    font-family: "Averta_Bold", sans-serif;
+}
+
+/* ===== Contenu Principal ===== */
+.admin-main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow-y: auto;
+}
+
+/* Header du contenu */
+.admin-header {
+    background-color: white;
+    padding: 20px 30px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header h2 {
+    margin: 0;
+    color: #003366;
+    font-family: "Averta_Bold", sans-serif;
+}
+
+.admin-user span {
+    font-size: 0.9rem;
+    font-family: "Averta_Regular", sans-serif;
+}
+
+.admin-user strong {
+    font-family: "Averta_Bold", sans-serif;
+}
+
+/* Zone de contenu */
+.admin-content {
+    padding: 30px;
+}
+
+/* Cartes de statistiques */
+.stat-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.stat-card h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: #555;
+    text-transform: uppercase;
+    font-family: "Averta_Bold", sans-serif;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 2rem;
+    font-family: "Averta_Bold", sans-serif;
+    color: #003366;
+}
+
+.stat-card small {
+    font-size: 0.85rem;
+    color: #777;
+    font-family: "Averta_Light", sans-serif;
+}
+
+/* Actions rapides */
+.quick-actions h3 {
+    color: #003366;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-family: "Averta_Bold", sans-serif;
+}
+
+.action-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-family: "Averta_Bold", sans-serif;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #002850;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+table thead {
+    background-color: #003366;
+    color: white;
+}
+
+table th {
+    padding: 15px;
+    text-align: left;
+    font-family: "Averta_Bold", sans-serif;
+    font-size: 0.9rem;
+}
+
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    font-family: "Averta_Regular", sans-serif;
+}
+
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Sections */
+.recent-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.recent-section h3 {
+    margin-top: 0;
+    color: #003366;
+    font-family: "Averta_Bold", sans-serif;
+}
+
+/* ===== Notifications Toast ===== */
+/* ===== Flash messages (toasts) ===== */
+.flash-stack {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: grid;
+  gap: 10px;
+  width: min(92vw, 520px);
+  pointer-events: none;
+}
+
+.alert.alert-toast {
+  pointer-events: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  padding: 12px 16px;
+  background: #ffffff;
+  color: #333;
+  border-left: 4px solid #d4af37;
+  transform: translateY(-16px);
+  opacity: 0;
+  transition: transform .5s ease, opacity .5s ease;
+}
+
+.alert-success.alert-toast { border-left-color: #4caf50; }
+.alert-error.alert-toast   { border-left-color: #f44336; }
+
+.alert.alert-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.alert.alert-toast.hide {
+  transform: translateY(-24px);
+  opacity: 0;
+}
+
+/* ===== Styles pour la gestion des chambres ===== */
+/* Modern room cards */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.room-card.modern {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.room-card.modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+}
+
+.room-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #e9eef4;
+}
+
+.room-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.room-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.25) 72%, rgba(0,0,0,.45) 100%);
+  pointer-events: none;
+}
+
+.room-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,51,102,.9);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+.price-chip {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(255,255,255,.95);
+  color: #003366;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  box-shadow: 0 6px 14px rgba(0,0,0,.12);
+}
+
+.room-content {
+  padding: 14px;
+}
+
+.room-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.room-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0e1b2e;
+  margin: 0;
+}
+
+.room-sub {
+  font-size: .9rem;
+  color: #5f6b7a;
+}
+
+.feature-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f2f5f9;
+  color: #314156;
+  font-size: .85rem;
+  border: 1px solid #e6ebf2;
+}
+
+.room-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.room-actions .action-btn {
+  width: 100%;
+  justify-self: stretch;
+}
+
+/* Skeleton loader */
+.skel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+.skel-card {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.skel-media {
+  aspect-ratio: 16/10;
+  background: linear-gradient(90deg, #f0f3f7 0%, #e9eef4 50%, #f0f3f7 100%);
+  background-size: 200% 100%;
+  animation: skel 1.2s ease-in-out infinite;
+}
+.skel-lines {
+  padding: 14px;
+}
+.skel-line {
+  height: 12px;
+  background: linear-gradient(90deg, #f0f3f7 0%, #e9eef4 50%, #f0f3f7 100%);
+  background-size: 200% 100%;
+  animation: skel 1.2s ease-in-out infinite;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.skel-line.short { width: 40%; }
+.skel-line.mid { width: 70%; }
+.skel-line.long { width: 95%; }
+
+@keyframes skel {
+  0% { background-position: 0% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Arrondis sur la zone image */
+.room-card.modern .room-media {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+/* ========================================
+   CARTES MODERNES DES CHAMBRES (compte_client.php)
+   ======================================== */
+
+/* Grille responsive des résultats */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Carte moderne avec image */
+.modern-room-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.modern-room-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Conteneur image avec overlay */
+.room-image-container {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.room-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.modern-room-card:hover .room-image-container img {
+  transform: scale(1.05);
+}
+
+/* Overlay dégradé sur l'image */
+.room-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+/* Badge numéro de chambre */
+.room-number-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(0, 51, 102, 0.93);
+  color: #ffffff;
+  padding: 7px 14px;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Badge prix flottant */
+.room-price-badge {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #003366;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+/* Détails de la chambre */
+.room-details {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* En-tête de la carte */
+.room-header {
+  margin-bottom: 14px;
+}
+
+.room-type-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.room-capacity-info {
+  font-size: 0.92rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+/* Description */
+.room-description-text {
+  font-size: 0.94rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 10px 0 14px 0;
+}
+
+/* Chips des équipements */
+.room-amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.amenity-chip {
+  background: #f1f5f9;
+  color: #334155;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.amenity-chip:hover {
+  background: #e0e7ff;
+  border-color: #c7d2fe;
+  color: #3730a3;
+}
+
+/* Formulaire de réservation */
+.room-booking-form {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 18px;
+  margin-top: auto;
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.form-row label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #334155;
+  margin-bottom: 7px;
+}
+
+.form-row input[type="number"],
+.form-row select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-row input[type="number"]:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Zone des services avec scroll */
+.services-checkboxes {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.service-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.service-option:hover {
+  background: #ffffff;
+}
+
+.service-option:last-child {
+  margin-bottom: 0;
+}
+
+.service-option input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.service-option label {
+  cursor: pointer;
+  flex: 1;
+  margin: 0 !important;
+  font-weight: 400 !important;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.service-option label strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.service-option label small {
+  display: block;
+  color: #64748b;
+  font-size: 0.82rem;
+  margin-top: 3px;
+}
+
+/* Bouton de réservation moderne */
+.reserve-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+.reserve-btn:hover {
+  background: linear-gradient(135deg, #002244 0%, #003d7a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
+.reserve-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .room-image-container {
+    height: 200px;
+  }
+  
+  .room-details {
+    padding: 18px;
+  }
+  
+  .room-type-name {
+    font-size: 1.2rem;
+  }
+}
+
+/* Skeleton loader (optionnel, si tu veux un effet de chargement) */
+.skeleton-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-content {
+  padding: 24px;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}
+
+.skeleton-line.medium {
+  width: 80%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

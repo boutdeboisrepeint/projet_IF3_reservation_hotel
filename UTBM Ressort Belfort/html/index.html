@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The UTBM Ressort Belfort</title>
+        
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    </head>
+    <body>
+        <header class="home-page-navbar-container">
+            <div class="navbar-inner">
+                <div class="navbar-left">
+                    <a href="./login.html" class="navbar-link">CONNEXION</a>
+                </div>
+
+                <div class="navbar-center">
+                    <h1 class="navbar-title">
+                        <span class="line-large">THE UTBM</span><br>
+                        <span class="line-medium">RESSORT</span><br>
+                        <span class="line-small">BELFORT</span>
+                    </h1>
+                </div>
+
+                <div class="navbar-right">
+                    <a href="../html/login.html" class="navbar-button">BOOK NOW</a>
+                </div>
+            </div>
+            
+            <div class="navbar-bottom-line"></div>
+            <nav class="navbar-submenu">
+                <a href="" class="submenu-link">EXTRA</a>
+                <a href="../php/search_redirect.php?section=new-reservation" class="submenu-link">OUR ROOMS</a>
+                <a href="" class="submenu-link">RESTAURANTS</a>
+                <a href="" class="submenu-link">Spa & Bien-être</a>
+                <a href="" class="submenu-link">Contact</a>
+            </nav>
+        </header>
+        
+        <div class="home-page-section-main-bg-container">
+            <img class="home-page-section-main-bg" src="../img/2654691_xlarge_1ea75b8c.jpg" alt="">
+            <h1 class="home-page-section-main-title">Your experts in budgets hotels around the world.</h1>
+        </div>
+
+        <section class="home-page-search-section">
+            <form class="search-container" id="main-search-form" method="GET" action="../php/search_redirect.php">
+                <div class="search-field">
+                    <label for="date-arrivee" class="search-label">CHECK-IN</label>
+                    <input type="text" id="date-arrivee" class="search-input" name="check_in" required>
+                </div>
+
+                <div class="search-field">
+                    <label for="date-depart" class="search-label">CHECK-OUT</label>
+                    <input type="text" id="date-depart" class="search-input" name="check_out" required>
+                </div>
+
+                <div class="search-field">
+                    <label for="adultes" class="search-label">Adultes</label>
+                    <input type="number" id="adultes" class="search-input" name="adultes" min="1" value="1">
+                </div>
+
+                <div class="search-field">
+                    <label for="enfants" class="search-label">Enfants</label>
+                    <input type="number" id="enfants" class="search-input" name="enfants" min="0" value="0">
+                </div>
+
+                <button type="submit" class="search-button">FIND ROOM</button>
+            </form>
+        </section>
+
+        <section class="home-page-intro">
+            <div class="intro-container">
+                <h2 class="intro-title">THIS IS THE MOST ULTRA-LUXURY EXPERIENTIAL RESORT IN THE WORLD</h2>
+                <p class="intro-text">
+                    Embrace a new standard of luxury, where the highest level of service sets a new benchmark for excellence. This is the place where something incredible happens at every moment of your stay.
+                </p>
+                <p class="intro-text">This is The UTBM.</p>
+                <a href="../html/login.html" class="intro-button">BOOK NOW</a>
+            </div>
+        </section>
+        <footer class="site-footer">
+            <div class="footer-container">
+                <p>© 2025 UTBM Resort Belfort. All rights reserved.</p>
+                <p>
+                    <a href="#" class="footer-link">Privacy Policy</a> |
+                    <a href="#" class="footer-link">Terms & Conditions</a>
+                </p>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+        <script>
+        const flatpickrConfig = {
+            locale: "fr",
+            altInput: true,
+            altFormat: "d/m/Y",
+            dateFormat: "Y-m-d",
+            minDate: "today"
+        };
+
+        function createPair(checkinId, checkoutId) {
+            const checkinPicker = flatpickr(checkinId, {
+                ...flatpickrConfig,
+                onChange: function(selectedDates, dateStr) {
+                    const checkoutPicker = document.querySelector(checkoutId)._flatpickr;
+                    if (checkoutPicker) {
+                        checkoutPicker.set('minDate', dateStr);
+                    }
+                }
+            });
+            const checkoutPicker = flatpickr(checkoutId, flatpickrConfig);
+            return { checkinPicker, checkoutPicker };
+        }
+
+        createPair("#date-arrivee", "#date-depart");
+
+        document.getElementById('main-search-form').addEventListener('submit', function(e) {
+            const checkIn = document.getElementById('date-arrivee').value;
+            const checkOut = document.getElementById('date-depart').value;
+            
+            if (!checkIn || !checkOut) {
+                e.preventDefault();
+                alert('Veuillez sélectionner les dates d\'arrivée et de départ.');
+                return;
+            }
+            
+            if (checkOut <= checkIn) {
+                e.preventDefault();
+                alert('La date de départ doit être après la date d\'arrivée.');
+                return;
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.home-page-navbar-container');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        </script>
+    </body>
+</html>

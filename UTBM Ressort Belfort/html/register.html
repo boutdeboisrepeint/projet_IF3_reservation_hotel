@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registration - UTBM Resort</title>
+
+    <link rel="stylesheet" href="../css/reservation.css" />
+    <link rel="stylesheet" href="../css/forms.css" />
+  </head>
+  <body>
+    <header class="home-page-navbar-container scrolled">
+      <div class="navbar-inner">
+        <div class="navbar-left">
+          <a href="../html/index.html" class="navbar-link">HOME</a>
+        </div>
+        <div class="navbar-center">
+          <h1 class="navbar-title">
+            <span class="line-large">THE UTBM</span><br />
+            <span class="line-medium">RESSORT</span><br />
+            <span class="line-small">BELFORT</span>
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <main class="reservation-main">
+      <section class="reservation-container form-container">
+        <h2>Create an Account</h2>
+        <p class="form-subtitle">Join us for a simplified booking experience.</p>
+
+        <form class="reservation-form auth-form" action="../php/register_process.php" method="POST">
+          <div class="reservation-field">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" required />
+          </div>
+
+          <div class="reservation-field">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" required />
+          </div>
+
+          <div class="reservation-field full-width">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="reservation-field full-width">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+
+          <div class="reservation-field full-width">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" />
+          </div>
+
+          <div class="reservation-field full-width">
+            <label for="date_of_birth">Birthdate</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" />
+          </div>
+
+          <div class="reservation-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+
+          <div class="reservation-field">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required />
+          </div>
+
+          <button type="submit" class="reservation-submit">Create account</button>
+
+
+          <p class="form-footer">
+            Already registered?
+            <a href="../html/login.html">Sign in</a>
+          </p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
