@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'test_finale');
+define('DB_NAME', 'gestion_reservation_hotel');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
